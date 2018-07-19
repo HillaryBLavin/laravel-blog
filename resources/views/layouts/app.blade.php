@@ -5,10 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{asset('css/app.css')}}"
-        <title>{{config('app.name', 'My First Laravel Blog')}}</title>
+        {{-- <title>{{config('app.name', 'My First Laravel Blog')}}</title> --}}
 
     </head>
     <body>
-        @yield('content')
+        @include('inc.navbar');
+        <div class="container">
+            @yield('content')
+        </div>
     </body>
 </html>
