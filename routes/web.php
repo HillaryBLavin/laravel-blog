@@ -19,7 +19,7 @@ Route::get('/about', function () {
     return view('pages.about');
 });
 
-// Dynamic route to retrieve specific user
-Route::get('/users/{id}', function($id) {
-    return 'Welcome, User '.$id;
-});
+// EXAMPLE - Dynamic route to retrieve specific user
+// Route::get('/users/{id}', function($id) {
+//     return 'Welcome, User '.$id;
+// });
