@@ -12,17 +12,18 @@
 */
 
 
-// Root Route w/o Controller
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// EXAMPLE - Routes w/o Controller
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // });
+    // Route::get('/about', function () {
+    //     return view('pages.about');
+    // });
 Route::get('/', 'PagesController@index');  
 Route::get('/about', 'PagesController@about');  
 Route::get('/services', 'PagesController@services');  
 
-Route::get('/about', function () {
-    return view('pages.about');
-});
+
 
 // EXAMPLE - Dynamic route to retrieve specific user
 // Route::get('/users/{id}', function($id) {
