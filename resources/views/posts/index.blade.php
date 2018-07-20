@@ -10,7 +10,7 @@
             </div> 
         @endforeach
         {{-- Pagination Links --}}
-        {{$posts->links()}}
+        {{-- {{$posts->links()}} --}}
     @else
         <p>No posts found.</p>
     @endif
