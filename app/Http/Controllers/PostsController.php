@@ -14,7 +14,17 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all(); // Fetch all the posts
+        // Use Eloquent to fetch all the posts
+            // $posts = Post::all();
+        // You can also do a regular db query to get the same results:
+            // $posts = DB::select('SELECT * FROM posts');
+        // Use orderBy to sort in descending order by title
+            // $posts = Post::orderBy('title', 'desc')->get();
+        // Use take() to just display a certain number of posts
+            // $posts = Post::orderBy('title', 'desc')->take(1)->get();
+        // Pagination
+        $posts = Post::orderBy('created_at', 'desc')->paginate(1);
+                
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -48,7 +58,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('posts.show')->with('post', $post) ;
+        return view('posts.show')->with('post', $post);
     }
 
     /**
