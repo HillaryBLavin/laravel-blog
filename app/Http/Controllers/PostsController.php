@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use DB;
 
 class PostsController extends Controller
 {
@@ -18,12 +19,12 @@ class PostsController extends Controller
             // $posts = Post::all();
         // You can also do a regular db query to get the same results:
             // $posts = DB::select('SELECT * FROM posts');
-        // Use orderBy to sort in descending order by title
-            // $posts = Post::orderBy('title', 'desc')->get();
+        // Use orderBy to sort in descending order by date/time created
+            $posts = Post::orderBy('created_at', 'desc')->get();
         // Use take() to just display a certain number of posts
-            // $posts = Post::orderBy('title', 'desc')->take(1)->get();
+            // $posts = Post::orderBy('created_at', 'desc')->take(1)->get();
         // Pagination
-        $posts = Post::orderBy('created_at', 'desc')->paginate(1);
+            // $posts = Post::orderBy('created_at', 'desc')->paginate(1);
                 
         return view('posts.index')->with('posts', $posts);
     }
@@ -51,7 +52,14 @@ class PostsController extends Controller
             'body' => 'required'
         ]);
 
-        return 123;
+        // Create Post
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Post Created'); // This is where we determine what the success message says from the messages.blade
+
     }
 
     /**
