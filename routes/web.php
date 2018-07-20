@@ -31,3 +31,6 @@ Route::resource('posts', 'PostsController');
 // Route::get('/users/{id}', function($id) {
 //     return 'Welcome, User '.$id;
 // });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
